@@ -4,6 +4,7 @@ import ProductName from './components/ProductName'
 import LogButton from './components/LogButton'
 import Rating from './components/Rating'
 import Header from './components/Header'
+import Form from './components/Form'
 
 function App() {
 
@@ -15,9 +16,10 @@ function App() {
         <LogButton />
         <Rating />
       </div>
-      <div>
+      <div className='w-3/4'>
         <Header />
       </div>
+      <Form />
     </div>
     </>
   )
