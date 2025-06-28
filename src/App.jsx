@@ -18,8 +18,10 @@ function App() {
       </div>
       <div className='w-3/4'>
         <Header />
+        <div className='bg-white m-2 p-4 rounded-2xl'>
+          <Form />
+        </div>
       </div>
-      <Form />
     </div>
     </>
   )
