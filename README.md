@@ -57,4 +57,3 @@ JWT_SECRET=your_secret_key
 
 Made with ❤️ using the MERN Stack
 
-```
