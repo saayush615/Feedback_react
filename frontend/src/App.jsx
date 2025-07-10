@@ -20,6 +20,7 @@ function App() {
         <Header />
         <div className='bg-white m-2 p-4 rounded-2xl'>
           <Form />
+          
         </div>
       </div>
     </div>
