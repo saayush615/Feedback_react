@@ -1,4 +1,5 @@
 # Root-level .gitignore for MERN app
+node_modules/
 
 # Ignore node_modules in both frontend and backend
 frontend/node_modules/
