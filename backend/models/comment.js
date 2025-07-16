@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-    username:{
-        type: mongoose.Schema.Type.ObjectId,
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
