@@ -10,8 +10,9 @@ function App() {
 
   return (
     <>
-    <div className='flex'>
-      <div className='w-1/4'>
+    <div className='flex h-screen'>
+      
+      <div className='w-1/4 bg-custom-red'>
         <ProductName />
         <LogButton />
         <Rating />

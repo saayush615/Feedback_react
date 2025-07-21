@@ -3,19 +3,19 @@ import Select from 'react-select'
 
 const options = [
   { value: 'performance', label: 'Performance' },
-  { value: 'battery Life', label: 'Battery Life' },
+  { value: 'batteryLife', label: 'Battery Life' },
   { value: 'display', label: 'Display' },
   { value: 'camera', label: 'Camera' },
-  { value: 'User Experience', label: 'User Experience' },
+  { value: 'userExperience', label: 'User Experience' },
 ];
 
 
 const Header = () => {
     const [selectedOption, setSelectedOption] = useState([]);
 
-    useEffect(() => {
-      console.log(selectedOption)
-    }, [selectedOption])
+    // useEffect(() => {
+    //   console.log(selectedOption)
+    // }, [selectedOption])
     
 
   return (
