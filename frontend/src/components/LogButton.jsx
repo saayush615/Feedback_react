@@ -6,8 +6,17 @@ const LogButton = () => {
     const [showForm, setShowForm] = useState(null); // login or register
 
     function handleLogout() {
-      setIsLoggedin(false);
-      setShowForm(null);
+      fetch('http://localhost:3000/users/logout',{
+        method: 'POST',
+        credentials: 'include'
+      })
+      .then(() => {
+        setIsLoggedin(false);
+        setShowForm(null);
+      })
+      .catch((error) => { 
+        console.error(`Logout failed: ${error}`);
+       })
     }
   return (
     <div className='bg-white rounded-2xl p-3 my-3 flex flex-col items-center'>

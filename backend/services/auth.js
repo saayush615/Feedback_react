@@ -5,7 +5,7 @@ dotenv.config();
 const secret = process.env.SECRET;
 
 async function generateToken(user) {
-    return jwt.sign({ id: user._id, email: user.email}, secret,{ expiresIn: '1h'}); // expiresIn : (s, m, h, d, w) or (60 * 60 = 3600 seconds = 1 hour)
+    return jwt.sign({ id: user._id, username: user.username}, secret,{ expiresIn: '1h'}); // expiresIn : (s, m, h, d, w) or (60 * 60 = 3600 seconds = 1 hour)
 }
 
 async function verifyToken(token) {

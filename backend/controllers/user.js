@@ -14,8 +14,8 @@ async function handleRegister(req,res){
 }
 
 async function handleLogin(req,res) {
-    const { email, password} = req.body;
-    const user = await User.findOne({ email });
+    const { username, password} = req.body;
+    const user = await User.findOne({ username });
     if (!user) {
         return res.status(404).json({ error: 'User not found'});  // 404 for user not found
     }
@@ -30,6 +30,7 @@ async function handleLogin(req,res) {
              maxAge: 60*60*1000 // 1 hour in milliseconds
         });  
 
+        
         return res.status(200).json({  // 200 for successful login
             message: 'Login successfully', 
             user: {id: user._id, username: user.username}

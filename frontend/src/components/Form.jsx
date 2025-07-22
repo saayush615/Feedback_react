@@ -9,9 +9,36 @@ const Form = () => {
     formState: { errors },
   } = useForm()
 
-   const onSubmit = (data) => { 
-    console.log(data);
+   const onSubmit = async (data) => { 
+    try {
+      // await postData('',data)
+      console.log(data);
+      reset();
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
     reset();
+    }
+
+    async function postData(url,payload) {
+      try{
+        const response = await fetch(url,{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        })
+        if(!response.ok){
+          const errorBody = await response.text();
+          throw new Error(`${errorBody}`)
+        }
+        const reasult = await response.json();
+        return reasult;
+      } catch(error){
+        console.error(error);
+        throw error;
+      }
     }
    
   return (

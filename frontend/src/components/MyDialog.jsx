@@ -14,12 +14,46 @@ const MyDialog = ({ showForm, setShowForm, setIsLoggedin }) => {
 	//   React Hook Form maintains state across submissions. When you submit the registration form, the values stay in the form state even when you switch to the login form.
 	}, [showForm])
 	
-	const onsubmit = (data) => { 
-		console.log(data);
-		if (showForm == 'login') {
-			setIsLoggedin(true);
+	const onsubmit = async (data) => { 
+		try {
+			if (showForm === 'register') {
+			await postData('http://localhost:3000/users/', data);
+			// Show success message
+			alert("Registration successful! Please login.");
+			}
+			if (showForm === 'login') {
+			const result = await postData('http://localhost:3000/users/login/', data);
+			if (result) {
+				setIsLoggedin(true);
+			}
+			}
+			setShowForm(null);  // Close dialog after form submission
+		} catch (error) {
+			// Show error message to user
+			alert(`Error: ${error.message}`);
 		}
-		setShowForm(null);  // Close dialog after form submission
+	}
+
+	async function postData(url,payload) {
+		try {
+			const response = await fetch(url,{
+				method: 'POST',
+				headers: {
+					'Content-Type' : 'application/json',
+				},
+				credentials: 'include',  // IMPORTANT: This enables sending cookies
+				body: JSON.stringify(payload),
+			})
+			if (!response.ok) {
+				const errorBody = await response.text(); // Get response body for more info
+            	throw new Error(`Invalid crentials ${errorBody}`);
+			}
+			const reasult = await response.json();
+			return reasult
+		} catch (error) {
+			console.error(error)
+			throw error
+		}
 	}
 
   return (
