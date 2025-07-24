@@ -1,14 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import MyDialog from './MyDialog';
+import UserContext from '../context/UserContext';
 
 const LogButton = () => {
-    const [isLoggedin, setIsLoggedin] = useState(false)
+    const { isLoggedin, setIsLoggedin } = useContext(UserContext);
     const [showForm, setShowForm] = useState(null); // login or register
 
     function handleLogout() {
       fetch('http://localhost:3000/users/logout',{
         method: 'POST',
-        credentials: 'include'
+        credentials: 'include'  // Enables sending and receiving cookies for cross-origin authentication, without this cookies won't be sent and authentication will fail
       })
       .then(() => {
         setIsLoggedin(false);
@@ -40,7 +41,7 @@ const LogButton = () => {
           {isLoggedin ? 'Logout' : 'Login'}
       </button>
       { !isLoggedin && (
-        <MyDialog showForm={showForm} setShowForm={setShowForm} setIsLoggedin={setIsLoggedin} />
+        <MyDialog showForm={showForm} setShowForm={setShowForm} />
       )
     }
     </div>

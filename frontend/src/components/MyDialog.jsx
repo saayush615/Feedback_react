@@ -1,11 +1,13 @@
 // MyDialog.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Dialog } from "radix-ui";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useForm } from 'react-hook-form';
+import UserContext from '../context/UserContext';
 
-const MyDialog = ({ showForm, setShowForm, setIsLoggedin }) => {
+const MyDialog = ({ showForm, setShowForm}) => {
 	const { register, handleSubmit, formState:{errors}, reset} = useForm();
+	const { setIsLoggedin, setUserData } = useContext(UserContext);
 
 	useEffect(() => {
 	  if (showForm) {
@@ -25,6 +27,7 @@ const MyDialog = ({ showForm, setShowForm, setIsLoggedin }) => {
 			const result = await postData('http://localhost:3000/users/login/', data);
 			if (result) {
 				setIsLoggedin(true);
+				setUserData(result.user);
 			}
 			}
 			setShowForm(null);  // Close dialog after form submission

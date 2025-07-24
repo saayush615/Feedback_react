@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { useForm } from 'react-hook-form';
+import UserContext from '../context/UserContext';
 
 const Form = () => {
       const {
@@ -7,12 +8,14 @@ const Form = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm()
+  } = useForm();
+
+  const { userData } = useContext(UserContext);
 
    const onSubmit = async (data) => { 
     try {
-      // await postData('',data)
-      console.log(data);
+      const reasult = await postData('http://localhost:3000/comments/',data);
+      console.log(reasult);
       reset();
     } catch (error) {
       alert(`Error: ${error.message}`);
@@ -27,7 +30,8 @@ const Form = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ user: userData.id, ...payload })  // The three dots (...) are called the spread operator in JavaScript. 
+                                                                  // It "spreads" or expands an object or array into its individual elements.
         })
         if(!response.ok){
           const errorBody = await response.text();
@@ -67,7 +71,7 @@ const Form = () => {
             <div className="flex flex-col w-3/4">
               <select 
               className='border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400'
-              {...register("select")}
+              {...register("categories")}
               >
                 <option value="performance">Performace</option>
                 <option value="batteryLife">Battery Life</option>

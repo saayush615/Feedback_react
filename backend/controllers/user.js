@@ -33,7 +33,7 @@ async function handleLogin(req,res) {
         
         return res.status(200).json({  // 200 for successful login
             message: 'Login successfully', 
-            user: {id: user._id, username: user.username}
+            user: {id: user._id, username: user.username},
         });  
 
     }
