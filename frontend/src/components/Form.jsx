@@ -13,14 +13,18 @@ const Form = () => {
   const { userData } = useContext(UserContext);
 
    const onSubmit = async (data) => { 
+    if (!userData) {
+      alert('You must login before submitting form')
+      return;
+    }
     try {
       const reasult = await postData('http://localhost:3000/comments/',data);
       console.log(reasult);
       reset();
+      alert('Comment successful')
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      alert(`Comment failed: ${error.message}`);
     }
-    reset();
     }
 
     async function postData(url,payload) {

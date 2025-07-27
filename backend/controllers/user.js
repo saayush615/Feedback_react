@@ -40,4 +40,42 @@ async function handleLogin(req,res) {
     return res.status(400).json({ error: 'Invalid password'});
 }
 
-export { handleRegister, handleLogin };
+async function handleLogout(req,res) {
+    res.clearCookie('uid', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict'
+    });
+    return res.status(200).json({ message: 'Logged out successfully'})
+}
+
+async function handleSession(req,res) {
+    try {
+        const token = req.cookies.uid;
+        if (!token) {
+            // Return 200 with authenticated: false instead of 401. since 401 introduced error at begginning
+            return res.status(200).json({
+                authenticated: false,
+                message: 'No authentication token found'
+            })
+        }
+
+        const decoded = verifyToken(token);
+        // console.log(decoded);
+        return res.status(200).json({
+            authenticated:true,
+            user: {
+                id: decoded.id,
+                username: decoded.username
+            }
+        });
+    } catch (error) {
+        // Return 200 with authenticated: false instead of 401. since 401 introduced error at begginning
+        return res.status(200).json({
+            authenticated: false,
+            message: 'Invalid or expired session'
+        })
+    }
+}
+
+export { handleRegister, handleLogin, handleLogout, handleSession };

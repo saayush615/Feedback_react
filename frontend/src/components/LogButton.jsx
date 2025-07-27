@@ -1,11 +1,15 @@
-import React,{useState, useContext} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
 import MyDialog from './MyDialog';
 import UserContext from '../context/UserContext';
 
 const LogButton = () => {
-    const { isLoggedin, setIsLoggedin } = useContext(UserContext);
+    const { isLoggedin, setIsLoggedin, setUserData } = useContext(UserContext);
     const [showForm, setShowForm] = useState(null); // login or register
 
+    useEffect(() => { 
+      
+     },[])
+    
     function handleLogout() {
       fetch('http://localhost:3000/users/logout',{
         method: 'POST',
@@ -14,6 +18,7 @@ const LogButton = () => {
       .then(() => {
         setIsLoggedin(false);
         setShowForm(null);
+        setUserData(null);
       })
       .catch((error) => { 
         console.error(`Logout failed: ${error}`);

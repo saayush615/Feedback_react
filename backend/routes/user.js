@@ -1,18 +1,12 @@
 import express from 'express';
-import { handleRegister, handleLogin } from '../controllers/user.js';
+import { handleRegister, handleLogin, handleLogout, handleSession } from '../controllers/user.js';
 
 const router = express.Router();
 
+router.get('/check-session', handleSession)
 router.post('/', handleRegister);
 router.post('/login', handleLogin);
 
-router.post('/logout', (req,res) => { 
-    res.clearCookie('uid', {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict'
-    });
-    return res.status(200).json({ message: 'Logged out successfully'})
- })
+router.post('/logout', handleLogout)
 
 export default router;
