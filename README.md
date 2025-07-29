@@ -201,46 +201,37 @@ SECRET=your_jwt_secret_key
 NODE_ENV=development
 ```
 
-### Customization
+## 🚧 Development Status
 
-**Product Information**: Modify [`ProductName.jsx`](frontend/src/components/ProductName.jsx)
-```jsx
-<h2 className='text-3xl font-bold'>Your Product Name</h2>
-<p><b>Category</b>: Your Category</p>
-<p><b>Seller</b>: Your Company</p>
-```
+**This project is currently under active development.** Some features are still being implemented and may not be fully functional.
 
-**Rating Categories**: Update [`Form.jsx`](frontend/src/components/Form.jsx) and [`Header.jsx`](frontend/src/components/Header.jsx)
-```jsx
-const options = [
-  { value: 'yourCategory', label: 'Your Category' },
-  // Add more categories
-];
-```
+### ⚠️ Known Limitations
+- **Comment Sorting/Filtering**: The category-based sorting using React Select in the [`Header.jsx`](frontend/src/components/Header.jsx) component is not yet functional
+- **Edit/Delete Comments**: The Edit and Delete buttons in [`CommentBox.jsx`](frontend/src/components/CommentBox.jsx) are UI placeholders only
+- **Form Validation**: Some advanced validation rules may be incomplete
+- **Error Handling**: Enhanced error messages and user feedback are being refined
 
-## 🚀 Deployment
+### 🔮 Upcoming Features
+- **Real-time filtering** by categories using the React Select dropdown
+- **Comment CRUD operations** (Edit/Delete functionality)
+- **User profile management** 
+- **Advanced comment sorting** (by date, rating, popularity)
+- **Pagination** for large comment lists
+- **Search functionality** for comments
+- **Email verification** for registration
+- **Password reset** functionality
+- **Admin panel** for content moderation
 
-### Backend Deployment (Railway/Heroku)
-1. Set environment variables in your hosting platform
-2. Update MongoDB URI to your cloud database
-3. Set `NODE_ENV=production`
+### 📝 Current Status
+- ✅ **Authentication System** - Fully functional
+- ✅ **Comment Submission** - Working with all validations
+- ✅ **Rating System** - Complete with category-wise calculations
+- ✅ **Responsive UI** - Mobile and desktop friendly
+- ⚠️ **Comment Filtering** - UI implemented, logic pending
+- ⚠️ **Comment Management** - Read-only functionality
 
-### Frontend Deployment (Netlify/Vercel)
-1. Build the project: `npm run build`
-2. Update API URLs in fetch calls to your deployed backend
-3. Deploy the `dist` folder
+**Note**: The app is stable for testing feedback submission and user authentication. Additional features will be added in future updates.
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
