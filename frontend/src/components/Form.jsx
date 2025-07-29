@@ -1,8 +1,11 @@
 import React, {useEffect, useState, useContext} from 'react'
 import { useForm } from 'react-hook-form';
 import UserContext from '../context/UserContext';
+import CommentContext from '../context/CommentContext';
 
 const Form = () => {
+  const { triggerRefresh, setTriggerRefresh } = useContext(CommentContext)
+
       const {
     register,
     handleSubmit,
@@ -20,6 +23,7 @@ const Form = () => {
     try {
       const reasult = await postData('http://localhost:3000/comments/',data);
       console.log(reasult);
+      setTriggerRefresh(!triggerRefresh)
       reset();
       alert('Comment successful')
     } catch (error) {

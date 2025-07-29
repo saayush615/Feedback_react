@@ -1,19 +1,19 @@
 import React from 'react'
 
-const CommentBox = () => {
+const CommentBox = ({ comment }) => {
   
   
   return (
     <div className=' bg-gray-300 w-full my-2 rounded-md'>
       {/* username and star */}
       <div className='px-3 pt-3 flex flex-row justify-between'>
-        <h2 className='text-sm font-bold'>ABCD</h2>
-        <p>⭐⭐⭐⭐⭐</p>
+        <h2 className='text-sm font-bold'>{ comment.user.username }</h2>
+        <p className='text-yellow-400 text-2xl'>{'★'.repeat(comment.rating)}</p>
       </div>
 
       {/* display comment */}
       <div className='p-3'>
-        <p className='text-l'>Great Product with great feature Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt corrupti minima adipisci vitae quae atque id veniam explicabo, saepe natus! Temporibus tenetur impedit nostrum veritatis quod dolor vero expedita aperiam?</p>
+        <p className='text-l'>{comment.comment}</p>
       </div>
 
       {/* horizontal rule */}

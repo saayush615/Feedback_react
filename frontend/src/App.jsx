@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Form from './components/Form'
 import Comments from './components/Comments'
 import UserContext from './context/UserContext'
+import CommentProvider from './context/CommentProvider'
 
 function App() {
   const { setIsLoggedin, setUserData } = useContext(UserContext)
@@ -57,22 +58,24 @@ function App() {
 
   return (
     <>
-       {/* h-auto: Height automatically adjusts to fit the content inside the container */}
-       {/* // overflow-hidden: Hides any content that extends beyond the container's boundaries (prevents scrollbars) */}
-      <div className='flex h-auto overflow-hidden'>
-        <div className='w-1/4 bg-custom-red'>
-          <ProductName />
-          <LogButton />
-          <Rating />
-        </div>
-        <div className='w-3/4'>
-          <Header />
-          <div className='bg-white m-2 p-4 rounded-2xl'>
-            <Form />
-            <Comments />
+      <CommentProvider>
+        {/* h-auto: Height automatically adjusts to fit the content inside the container */}
+        {/* // overflow-hidden: Hides any content that extends beyond the container's boundaries (prevents scrollbars) */}
+        <div className='flex h-auto overflow-hidden'>
+          <div className='w-1/4 bg-custom-red'>
+            <ProductName />
+            <LogButton />
+            <Rating />
+          </div>
+          <div className='w-3/4'>
+            <Header />
+            <div className='bg-white m-2 p-4 rounded-2xl'>
+              <Form />
+              <Comments />
+            </div>
           </div>
         </div>
-      </div>
+      </CommentProvider>
     </>
   )
 }
