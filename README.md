@@ -2,7 +2,7 @@
 
 A full-stack MERN (MongoDB, Express.js, React.js, Node.js) application where users can register, log in, and share their feedback by giving ratings and comments across different product categories. The app features a modern UI with product reviews, category-based ratings, and real-time feedback management.
 
-![App Demo](https://via.placeholder.com/800x400?text=App+Screenshot)
+![App Demo]()
 
 ## 🔧 Tech Stack
 
@@ -248,12 +248,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Tailwind CSS** for utility-first styling
 - **React Hook Form** for form management
 - **MongoDB** for database solutions
-
-## 📞 Contact
-
-Your Name - [your.email@example.com](mailto:your.email@example.com)
-
-Project Link: [https://github.com/yourusername/mern-feedback](https://github.com/yourusername/mern-feedback)
 
 ---
 
